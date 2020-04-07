@@ -26,3 +26,4 @@ const main = () => {
     server.start();
 };
 main();
+cd 

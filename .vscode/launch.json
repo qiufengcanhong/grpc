@@ -27,6 +27,18 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/http/app.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "http2",
+            "restart": true,
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/http2/app.js"
         }
     ]
 }
