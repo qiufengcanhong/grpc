@@ -19,7 +19,6 @@ let count = 0;
 let success = 0;
 let error = 0;
 let times = 5000;
-
 for (let i = 0; i < times; i++) {
     taskList[i] = new Promise((resolve, reject) => {
         var hello_proto = grpc.loadPackageDefinition(packageDefinition).helloworld;

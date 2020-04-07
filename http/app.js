@@ -1,25 +1,23 @@
-var express = require('express');
-var app = express();
+var http = require('http');
+var url = require('url');
+var util = require('util');
 
-//定义方法
-app.get('/', function (req, res) {
-    res.send('HellowWorld')
-});
-app.get('/list', function (req, res) {
+http.createServer(function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+
+    // 解析 url 参数
+    var params = url.parse(req.url, true).query;
     let result = {
         err: 0,
         msg: 'ok',
         data: {
             name: "hello world",
-            id: req.query.id
+            id: params.id 
         }
     }
-    if (req.query.id !== 1) {
+    if (params.id !== 1) {
         result.data.name = "hello grpc";
     }
-    res.send(result)
-})
-//定义端口，此处所用为3000端口，可自行更改
-var server = app.listen(3000, function () {
-    console.log('runing 3000...');
-})
+    res.end(JSON.stringify(result));
+
+}).listen(3000);
