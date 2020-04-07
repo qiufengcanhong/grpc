@@ -1,0 +1,23 @@
+{
+  "name": "grpcnode",
+  "version": "1.0.0",
+  "description": "grpcDemo",
+  "main": "index.js",
+  "scripts": {
+    "test": "/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "/"
+  },
+  "keywords": [
+    "grpc",
+    "Node"
+  ],
+  "author": "seanxu",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.3",
+    "grpc": "^1.24.2"
+  }
+}
