@@ -27,6 +27,8 @@ for (let i = 0; i < times; i++) {
         client.sayHello({ id: 1 }, function (err, response) {
             count++;
             if (err) {
+                console.log(err);
+                
                 hello_proto=null
                 client=null
                 error++;
