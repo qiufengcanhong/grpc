@@ -22,7 +22,7 @@ const sayHello = (call, callback) => {
 const main = () => {
     var server = new grpc.Server();
     server.addService(hello_proto.Greeter.service, { sayHello: sayHello });
-    server.bind('localhost:50051', grpc.ServerCredentials.createInsecure());
+    server.bind('http://localhost:50051', grpc.ServerCredentials.createInsecure());
     server.start();
 };
 main();

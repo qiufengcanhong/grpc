@@ -8,7 +8,7 @@ let error = 0
 let times = 3000
 for (let i = 0; i < times; i++) {
 	taskList[i] = new Promise((resolve, reject) => {
-		http.get('http://39.100.197.67:3000?id=1', function(req, res) {
+		http.get('http://127.0.0.1:3000?id=1', function(req, res) {
 			let stream = ''
 			req.on('data', function(data) {
 				stream += data
@@ -18,7 +18,7 @@ for (let i = 0; i < times; i++) {
 				error++
 				resolve({ count, success, error })
 			})
-			req.on('end', function() {
+			req.on('end', function() {            
 				count++
 				success++
 				resolve({ count, success, error })

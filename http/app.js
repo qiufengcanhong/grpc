@@ -1,23 +1,20 @@
-var http = require('http');
-var url = require('url');
-var util = require('util');
-
-http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-
-    // 解析 url 参数
-    var params = url.parse(req.url, true).query;
+const express = require('express');
+const app = express();
+app.get('/', function (req, res) {
+    const { id } = +req.query;
     let result = {
         err: 0,
         msg: 'ok',
         data: {
             name: "hello world",
-            id: params.id 
+            id
         }
     }
-    if (params.id !== 1) {
+    if (id !== 1) {
         result.data.name = "hello grpc";
     }
     res.end(JSON.stringify(result));
-
-}).listen(3000);
+})
+app.listen(3000, () => {
+    console.log('服务启动...');
+})
