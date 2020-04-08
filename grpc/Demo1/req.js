@@ -1,5 +1,5 @@
 var PROTO_PATH = __dirname + '/helloworld.proto';
-
+let { employees } = require('./data.js');
 var grpc = require('grpc');
 var protoLoader = require('@grpc/proto-loader');
 var packageDefinition = protoLoader.loadSync(
@@ -18,22 +18,20 @@ const start = (new Date()).getTime();
 let count = 0;
 let success = 0;
 let error = 0;
-let times = 3000;
+let times = 1;
 for (let i = 0; i < times; i++) {
     taskList[i] = new Promise((resolve, reject) => {
         var hello_proto = grpc.loadPackageDefinition(packageDefinition).helloworld;
-        var client = new hello_proto.Greeter('127.0.0.1:50051',
-            grpc.credentials.createInsecure());
-        client.sayHello({ id: 1 }, function (err, response) {
+        var client = new hello_proto.Greeter('127.0.0.1:50051',grpc.credentials.createInsecure());
+        client.sayHello({ id: 1 ,employees:JSON.stringify(employees) }, function (err, response) {
             count++;
             if (err) {
-                console.log(err);
-                client=null
                 error++;
+                client = null;
                 resolve();
             } else {
                 success++;
-                client=null;
+                client = null;
                 resolve();
             }
         });

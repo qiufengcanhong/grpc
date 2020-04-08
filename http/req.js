@@ -5,7 +5,7 @@ const start = new Date().getTime();
 let count = 0;
 let success = 0;
 let error = 0;
-let times = 3000;
+let times = 10;
 for (let i = 0; i < times; i++) {
     taskList[i] = new Promise((resolve, reject) => {
         http.get('http://39.100.197.67:3000?id=1', function (req, res) {

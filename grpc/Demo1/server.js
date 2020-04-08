@@ -1,6 +1,7 @@
 const PROTO_PATH = __dirname + '/helloworld.proto';
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
+let { employees } = require('./data.js');
 const packageDefinition = protoLoader.loadSync(
     PROTO_PATH,
     {
@@ -16,7 +17,7 @@ const sayHello = (call, callback) => {
     if (call.request.id !== 1) {
         data.name = 'hello grpc'
     }
-    callback(null, { message: JSON.stringify({ err: 0, msg: 'ok', data }) })
+    callback(null, { message: JSON.stringify({ err: 0, msg: 'ok', data ,employees}) })
 }
 
 const main = () => {
@@ -26,4 +27,3 @@ const main = () => {
     server.start();
 };
 main();
-cd 

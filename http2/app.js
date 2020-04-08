@@ -23,10 +23,6 @@ server.on('stream', (stream, headers) => {
     if (+id !== 1) {
         result.data.name = "hello grpc";
     }
-    stream.respond({
-        'content-type': 'text/html',
-        ':status': 200
-    });
     stream.end(JSON.stringify(result));
 });
 server.listen(3001);
