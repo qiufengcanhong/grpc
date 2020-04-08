@@ -1,14 +1,15 @@
 const http = require('http');
 const taskList = [];
+let { employees } = require('./data.js');
 console.log('请求数据中...');
 const start = new Date().getTime();
 let count = 0;
 let success = 0;
 let error = 0;
-let times = 10;
+let times = 1;
 for (let i = 0; i < times; i++) {
     taskList[i] = new Promise((resolve, reject) => {
-        http.get('http://39.100.197.67:3000?id=1', function (req, res) {
+        http.get(`http://39.100.197.67:3000?id=1&${JSON.stringify(employees)}`, function (req, res) {
             let stream = '';
             req.setTimeout(10000);
             req.on('data', function (data) {

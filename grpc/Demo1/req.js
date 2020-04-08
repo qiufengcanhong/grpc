@@ -18,11 +18,11 @@ const start = (new Date()).getTime();
 let count = 0;
 let success = 0;
 let error = 0;
-let times = 1;
+let times = 10;
 for (let i = 0; i < times; i++) {
     taskList[i] = new Promise((resolve, reject) => {
         var hello_proto = grpc.loadPackageDefinition(packageDefinition).helloworld;
-        var client = new hello_proto.Greeter('127.0.0.1:50051',grpc.credentials.createInsecure());
+        var client = new hello_proto.Greeter('39.100.197.67:50051',grpc.credentials.createInsecure());
         client.sayHello({ id: 1 ,employees:JSON.stringify(employees) }, function (err, response) {
             count++;
             if (err) {
